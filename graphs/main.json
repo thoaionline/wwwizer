@@ -8,6 +8,89 @@
     "inports": {},
     "outports": {},
     "groups": [],
-    "processes": {},
-    "connections": []
+    "processes": {
+        "webserver/Server_ljt9d": {
+            "component": "webserver/Server",
+            "metadata": {
+                "label": "webserver/Server",
+                "x": 360,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "webserver/SendResponse_nuqub": {
+            "component": "webserver/SendResponse",
+            "metadata": {
+                "label": "webserver/SendResponse",
+                "x": 936,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "woute/FromPorts_h9o4f": {
+            "component": "woute/FromPorts",
+            "metadata": {
+                "label": "woute/FromPorts",
+                "x": 360,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "webserver/Query_w5mk1": {
+            "component": "webserver/Query",
+            "metadata": {
+                "label": "webserver/Query",
+                "x": 576,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "webserver/BodyParser_5tsja": {
+            "component": "webserver/BodyParser",
+            "metadata": {
+                "label": "webserver/BodyParser",
+                "x": 792,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "webserver/Server_ljt9d",
+                "port": "request"
+            },
+            "tgt": {
+                "process": "webserver/Query_w5mk1",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "webserver/Query_w5mk1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "webserver/BodyParser_5tsja",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": 9000,
+            "tgt": {
+                "process": "webserver/Server_ljt9d",
+                "port": "listen"
+            }
+        }
+    ]
 }
